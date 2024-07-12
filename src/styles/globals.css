@@ -1,5 +1,32 @@
-* {
-	box-sizing: border-box;
+html,
+body {
+	height: 100%;
+	overflow-x: hidden;
 	padding: 0;
 	margin: 0;
+}
+.page-bg {
+	animation: rotate-40-cw 10.2s ease-out 0s infinite normal forwards;
+}
+
+@keyframes rotate-40-cw {
+	50% {
+		transform: rotate(40deg);
+	}
+	100% {
+		transform: rotate(0);
+	}
+}
+
+@keyframes bounce-top {
+	50% {
+		transform:translateY(-24px);
+	}
+	100% {
+		transform:translateY(0);
+	}
+}
+
+.chip {
+	animation: bounce-top 4s linear 0s infinite normal none;
 }
