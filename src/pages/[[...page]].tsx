@@ -4,6 +4,7 @@ import { BuilderContent } from "@builder.io/sdk";
 import DefaultErrorPage from "next/error";
 import Head from "next/head";
 import { GetStaticProps } from "next";
+import './../../builder.config';
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
