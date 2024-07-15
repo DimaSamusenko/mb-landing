@@ -20,13 +20,81 @@ body {
 
 @keyframes bounce-top {
 	50% {
-		transform:translateY(-24px);
+		transform: translateY(-24px);
 	}
 	100% {
-		transform:translateY(0);
+		transform: translateY(0);
 	}
 }
 
 .chip {
 	animation: bounce-top 4s linear 0s infinite normal none;
+}
+
+.displayBackground {
+	display: block !important;
+	animation: displayBackground 1s linear forwards;
+}
+
+.display {
+	display: block !important;
+	animation: display 1s linear forwards;
+}
+
+@keyframes display {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes displayBackground {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 0.75;
+	}
+}
+
+.displayNone {
+	display: none !important;
+}
+
+.bgChip {
+	animation: translateChipMinBg 1s linear forwards;
+}
+
+.chipMin {
+	animation: translateChipMin 1s linear forwards;
+}
+
+@keyframes translateChipMin {
+	0% {
+		transform: translate(0);
+	}
+	100% {
+		transform: translate(0, -80px);
+	}
+}
+
+@keyframes translateChipMinBg {
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(-200px);
+	}
+}
+
+.chipSize {
+	max-width: 155px !important;
 }

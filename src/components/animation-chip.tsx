@@ -1,7 +1,3 @@
 export default function AnimationChip({ children }) {
-    return (
-        <div>
-            {children}
-        </div>
-    )
+	return <div>{children}</div>;
 }

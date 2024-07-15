@@ -1,9 +1,11 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import React from "react";
 import { BuilderComponent, builder, useIsPreviewing } from "@builder.io/react";
 import { BuilderContent } from "@builder.io/sdk";
 import DefaultErrorPage from "next/error";
 import Head from "next/head";
 import { GetStaticProps } from "next";
+import Script from "next/script";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -50,6 +52,7 @@ export default function Page({ page }: { page: BuilderContent | null }) {
 			<Head>
 				<title>{page?.data?.title}</title>
 			</Head>
+
 			<BuilderComponent model="page" content={page || undefined} />
 		</>
 	);
