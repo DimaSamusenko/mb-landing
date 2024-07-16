@@ -33,12 +33,12 @@ body {
 
 .displayBackground {
 	display: block !important;
-	animation: displayBackground 1s linear forwards;
+	animation: displayBackground 0.2s linear forwards;
 }
 
 .display {
 	display: block !important;
-	animation: display 1s linear forwards;
+	animation: display 0.2s linear forwards;
 }
 
 @keyframes display {
@@ -70,11 +70,11 @@ body {
 }
 
 .bgChip {
-	animation: translateChipMinBg 1s linear forwards;
+	animation: translateChipMinBg 0.2s linear forwards;
 }
 
 .chipMin {
-	animation: translateChipMin 1s linear forwards;
+	animation: translateChipMin 0.2s linear forwards;
 }
 
 @keyframes translateChipMin {
