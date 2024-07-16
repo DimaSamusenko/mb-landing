@@ -9,12 +9,18 @@ import "./../../builder.config";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
+const locale = 'en-US';
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const page = await builder
 		.get("page", {
 			userAttributes: {
 				urlPath: "/" + ((params?.page as string[])?.join("/") || ""),
+				jurisdiction: 'curacao',
+				locale: locale
 			},
+			options: {
+				locale: locale
+			}
 		})
 		.toPromise();
 
@@ -53,7 +59,7 @@ export default function Page({ page }: { page: BuilderContent | null }) {
 				<title>{page?.data?.title}</title>
 			</Head>
 
-			<BuilderComponent model="page" content={page || undefined} />
+			<BuilderComponent model="page" content={page || undefined} locale={locale} />
 		</>
 	);
 }
