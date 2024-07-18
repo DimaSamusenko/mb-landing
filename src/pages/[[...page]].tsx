@@ -49,16 +49,6 @@ export async function getStaticPaths() {
 
 export default function Page({ page }: { page: BuilderContent | null }) {
 	const isPreviewing = useIsPreviewing();
-	const local = useRouter();
-
-	useEffect(() => {
-		if (!(document.cookie.indexOf("visited") >= 0)) {
-			document.cookie = "visited";
-		}
-		if (!local.asPath.includes("redirect=false")) {
-			local.push("/");
-		}
-	}, []);
 
 	if (!page && !isPreviewing) {
 		return <DefaultErrorPage statusCode={404} />;
