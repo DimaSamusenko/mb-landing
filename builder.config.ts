@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import AnimationChip from "@/components/animation-chip";
 import ModalText from "@/components/modal-text";
 import CookiePolicy from "@/components/cookie-policy/cookie-policy";
+import CopyPromocode from "@/components/copy-promocode/copy-promocode";
 
 Builder.registerComponent(withChildren(AnimationChip), {
     name: 'Animation Chip',
@@ -32,4 +33,14 @@ Builder.registerComponent(withChildren(CookiePolicy), {
             component: { name: 'Text', options: { text: 'I am child text block!' } }
         }
     ]
+})
+
+Builder.registerComponent(CopyPromocode, {
+    name: 'Copy Promocode',
+    inputs: [
+        { name: 'title', type: 'text' },
+        { name: 'promocode', type: 'text' },
+        { name: 'copied', type: 'text', defaultValue: 'Copy the promo code' },
+        { name: 'helpText', type: 'text', defaultValue: 'Promo code was copied successfully!' },
+    ],
 })

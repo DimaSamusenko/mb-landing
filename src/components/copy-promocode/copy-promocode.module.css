@@ -1,0 +1,89 @@
+.promo-code {
+    border: 3px solid #27FFFA;
+    border-radius: 100px;
+    align-items: center;
+    display: inline-flex;
+    padding: 0 25px;
+    cursor: pointer;
+    margin-top: 0;
+    height: 60px;
+}
+
+.code-field {
+    font-weight: 400;
+    line-height: .9;
+    color: #FFF;
+}
+
+.code {
+    letter-spacing: .05em;
+    font-weight: 700;
+    color: #27FFFA
+}
+
+.copy-btn {
+    margin-left: 1vw;
+    width: 1.5vw;
+    background: transparent;
+    border: 0;
+}
+
+.copy-btn img {
+    display: block;
+    width: 100%;
+}
+
+.helper-text {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    font-size: 11px;
+    display: none;
+    top: -20px;
+    left: 0;
+}
+
+.promo-code:hover .helper-text {
+    display: block;
+}
+
+@media screen and (max-width: 1366px) {
+    .promo-code {
+        margin-top:3vw;
+        padding: 0 3vw;
+        height: 7vw
+    }
+
+    .code-field {
+        font-size: 2.8vw
+    }
+
+    .code {
+        font-size: 3.2vw
+    }
+
+    .copy-btn {
+        width: 2.5vw
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .promo-code {
+        margin-top:5vw;
+        padding: 0 4vw;
+        height: 10vw
+    }
+
+    .code-field {
+        font-size: 3.8vw
+    }
+
+    .code {
+        font-size: 4vw
+    }
+
+    .copy-btn {
+        width: 4vw
+    }
+}
