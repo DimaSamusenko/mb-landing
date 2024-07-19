@@ -2,9 +2,11 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-/*	const visited = request.cookies.get("visited")?.value;
+	const path = request.nextUrl.pathname;
 
-	const redirect = !request.headers.get("referer")?.includes("redirect=false");
+	console.log(path);
+	const visited = request.cookies.get("visited")?.value;
+	const redirect = request.nextUrl.searchParams.get("redirect") !== "false";
 
 	console.log("is visited", visited);
 
@@ -14,6 +16,14 @@ export function middleware(request: NextRequest) {
 					new URL("https://www.marathonbet.com/", request.url)
 			  )
 			: NextResponse.next();
-	response.cookies.set("visited", "true");*/
-	return NextResponse.next();
+
+	response.cookies.set("visited", "true", {
+		path: `${path}`,
+	});
+
+	return response;
 }
+
+export const config = {
+	matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+};
