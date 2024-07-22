@@ -119,3 +119,65 @@ body {
 		transform: rotateY(-360deg) translateY(-30px);
 	}
 }
+
+.ballClick {
+	animation: ball-click 1.5s ease-in;
+}
+
+@keyframes ball-click {
+	0% {
+		bottom: 0px;
+	}
+	10% {
+		bottom: 100px;
+	}
+	20% {
+		bottom: 200px;
+	}
+	40% {
+		bottom: 0px;
+	}
+	55% {
+		bottom: 25px;
+	}
+	70% {
+		bottom: 0px;
+	}
+	85% {
+		bottom: 10px;
+	}
+	100% {
+		bottom: 0px;
+	}
+}
+
+.shadowAnimation {
+	animation: shadow-animation 1.5s ease-in;
+}
+
+@keyframes shadow-animation {
+	0% {
+		transform: scaleX(1);
+	}
+	25% {
+		transform: scaleX(0.6);
+		filter: blur(10px);
+	}
+	40% {
+		transform: scaleX(1);
+	}
+	55% {
+		transform: scaleX(0.7);
+		filter: blur(2px);
+	}
+	70% {
+		transform: scaleX(1);
+	}
+	85% {
+		transform: scaleX(0.9);
+		filter: blur(1px);
+	}
+	100% {
+		transform: scaleX(1);
+	}
+}
