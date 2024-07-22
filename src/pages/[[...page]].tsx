@@ -6,21 +6,27 @@ import DefaultErrorPage from "next/error";
 import Head from "next/head";
 import { GetStaticProps } from "next";
 import "./../../builder.config";
-import { useRouter } from "next/router";
+import {localeDefault, locales} from "@/config";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
-const locale = "en-US";
+function getLocale(url: string) {
+	return [url.split("-"), url.split("_")].map((url) => {
+		return locales[url.at(-1)]
+	}).filter(Boolean).pop()
+}
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+	const slug = ((params?.page as string[])?.join("/") || "");
+	const locale = getLocale(slug) || localeDefault;
 	const page = await builder
 		.get("page", {
 			userAttributes: {
-				urlPath: "/" + ((params?.page as string[])?.join("/") || ""),
+				urlPath: "/" + slug,
 				jurisdiction: "curacao",
-				locale: locale,
+				// locale: locale,
 			},
 			options: {
-				locale: locale,
+				locale,
 			},
 		})
 		.toPromise();
@@ -62,7 +68,7 @@ export default function Page({ page }: { page: BuilderContent | null }) {
 			<BuilderComponent
 				model="page"
 				content={page || undefined}
-				locale={locale}
+				// locale={locale}
 			/>
 		</>
 	);
