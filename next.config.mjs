@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+import withBundleAnalyzer from '@next/bundle-analyzer';
+
+const bundleAnalyzer = withBundleAnalyzer({
+	enabled: !!process.env.BUNDLE_ANALYZE,
+})
+
+const nextConfig = bundleAnalyzer({
 	reactStrictMode: true,
 	eslint: {
 		ignoreDuringBuilds: true,
@@ -7,6 +13,27 @@ const nextConfig = {
 	typescript: {
 		ignoreBuildErrors: true,
 	},
-};
+	images: {
+		domains: ['cdn.builder.io'],
+	},
+	async headers() {
+		return [
+			{
+				source: '/:path*',
+				headers: [
+					// this will allow site to be framed under builder.io for wysiwyg editing
+					{
+						key: 'Content-Security-Policy',
+						value: 'frame-ancestors https://*.builder.io https://builder.io',
+					},
+				],
+			},
+		]
+	},
+	env: {
+		// expose env to the browser
+		BUILDER_PUBLIC_KEY: process.env.BUILDER_PUBLIC_KEY,
+	},
+})
 
 export default nextConfig;

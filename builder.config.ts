@@ -25,7 +25,7 @@ Builder.registerComponent(withChildren(ModalText), {
     ]
 })
 
-Builder.registerComponent(withChildren(CookiePolicy), {
+/*Builder.registerComponent(withChildren(CookiePolicy), {
     name: 'Cookie Policy',
     defaultChildren: [
         {
@@ -33,7 +33,7 @@ Builder.registerComponent(withChildren(CookiePolicy), {
             component: { name: 'Text', options: { text: 'I am child text block!' } }
         }
     ]
-})
+})*/
 
 Builder.registerComponent(CopyPromocode, {
     name: 'Copy Promocode',
