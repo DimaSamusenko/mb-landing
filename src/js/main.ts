@@ -2,7 +2,7 @@ export const main = (function main() {
     if(!document) {
         return;
     }
-    document.addEventListener('click', (event) => {
+    function clickHandler(event) {
         let target = event.target;
         if (target?.tagName !== 'A') {
             target = target?.closest("A");
@@ -15,8 +15,15 @@ export const main = (function main() {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
 
-        const separator = target?.href?.indexOf('?') !== -1 ? "&" : "?";
-        window.open(target?.href + separator + urlParams.toString());
+        const separator = target.href?.indexOf('?') !== -1 ? "&" : "?";
+        window.open(target.href + separator + urlParams.toString());
+    }
+    document.addEventListener('touchstart', event => {
+        clickHandler(event);
     });
+    document.addEventListener('click', event => {
+        clickHandler(event);
+    });
+
 }).toString();
 
