@@ -24,10 +24,10 @@
 }
 
 .copy-btn {
-    margin-left: 1vw;
     width: 1.5vw;
     background: transparent;
     border: 0;
+    margin-left: auto;
 }
 
 .copy-btn img {
@@ -52,17 +52,16 @@
 
 @media screen and (max-width: 1366px) {
     .promo-code {
-        margin-top:3vw;
-        padding: 0 3vw;
-        height: 7vw
+        padding: 0 20px;
+        height: 58px
     }
 
     .code-field {
-        font-size: 2.8vw
+        font-size: 18px
     }
 
     .code {
-        font-size: 3.2vw
+        font-size: 20px
     }
 
     .copy-btn {
@@ -72,17 +71,16 @@
 
 @media screen and (max-width: 768px) {
     .promo-code {
-        margin-top:5vw;
-        padding: 0 4vw;
-        height: 10vw
+        padding: 0 15px;
+        height: 44px
     }
 
     .code-field {
-        font-size: 3.8vw
+        font-size: 16px
     }
 
     .code {
-        font-size: 4vw
+        font-size: 17px
     }
 
     .copy-btn {

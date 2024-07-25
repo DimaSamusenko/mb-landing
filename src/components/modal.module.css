@@ -8,6 +8,9 @@
     position: relative;
     z-index: 15;
 }
+.modal a {
+    color: inherit;
+}
 .modal h2 { margin-top: 0; }
 .close {
     position: absolute;
