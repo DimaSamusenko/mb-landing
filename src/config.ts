@@ -5,3 +5,5 @@ export const locales = {
     ru: 'ru-RU',
     uz: 'uz-Arab',
 };
+
+export const cookieAcceptKey = 'ConsentCookie';

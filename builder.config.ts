@@ -4,6 +4,7 @@ import AnimationChip from "@/components/animation-chip";
 import ModalText from "@/components/modal-text";
 import CookiePolicy from "@/components/cookie-policy/cookie-policy";
 import CopyPromocode from "@/components/copy-promocode/copy-promocode";
+import CookieBanner from "@/components/cookie-banner/cookie-banner";
 
 Builder.registerComponent(withChildren(AnimationChip), {
     name: 'Animation Chip',
@@ -43,4 +44,17 @@ Builder.registerComponent(CopyPromocode, {
         { name: 'copied', type: 'text', defaultValue: 'Copy the promo code' },
         { name: 'helpText', type: 'text', defaultValue: 'Promo code was copied successfully!' },
     ],
+})
+
+Builder.registerComponent(withChildren(CookieBanner), {
+    name: 'Cookie banner',
+    inputs: [
+        { name: 'buttonLabel', type: 'text' },
+    ],
+    defaultChildren: [
+        {
+            '@type': '@builder.io/sdk:Element',
+            component: { name: 'Text', options: { text: 'I am child text block!' } }
+        }
+    ]
 })
