@@ -2,7 +2,7 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    height: 52px;
+    min-height: 52px;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
@@ -37,7 +37,8 @@
 }
 
 .cookie-notice .cookie-notice-text-container {
-    margin-right: 30px
+    margin-right: 30px;
+    padding: 5px 15px;
 }
 
 .cookie-notice__policy {
@@ -51,10 +52,11 @@
     opacity: 1;
     width: auto;
     padding: 0 12px;
-    height: 24px;
-    min-width: 43px;
+    min-height: 24px;
+    min-width: 60px;
     font-size: 12px;
     border: 0;
     border-radius: 3px;
     cursor: pointer;
+    margin-right: 10px;
 }
