@@ -9,7 +9,7 @@ const oneDay = 24 * 60 * 60 * 1000;
 const expiresDays = 182;
 
 export default function CookieBanner({children, buttonLabel}) {
-    const [toggle, setToggle] = useState(false);
+    const [toggle, setToggle] = useState(true);
 
     useEffect(() => {
         const cookie = getCookie(cookieAcceptKey);
