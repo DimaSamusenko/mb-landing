@@ -5,6 +5,7 @@ import ModalText from "@/components/modal-text";
 import CookiePolicy from "@/components/cookie-policy/cookie-policy";
 import CopyPromocode from "@/components/copy-promocode/copy-promocode";
 import CookieBanner from "@/components/cookie-banner/cookie-banner";
+import LangSelector from "@/components/lang-selector/lang-selector";
 
 Builder.registerComponent(withChildren(AnimationChip), {
     name: 'Animation Chip',
@@ -55,6 +56,48 @@ Builder.registerComponent(withChildren(CookieBanner), {
         {
             '@type': '@builder.io/sdk:Element',
             component: { name: 'Text', options: { text: 'I am child text block!' } }
+        }
+    ]
+})
+
+Builder.registerComponent(LangSelector, {
+    name: 'Lang selector',
+    inputs: [
+        {
+            name: 'darkMode',
+            type: 'boolean',
+            defaultValue: true,
+        },
+        {
+            name: 'Lang',
+            type: 'list',
+            defaultValue: [
+                { label: 'EN' }
+            ],
+            subFields: [
+                {
+                    name: 'label',
+                    type: 'string',
+                    defaultValue: 'EN',
+                },
+                {
+                    name: 'fullLabel',
+                    type: 'string',
+                    defaultValue: 'EN',
+                },
+                {
+                    name: 'slug',
+                    type: 'string',
+                    defaultValue: 'en',
+                },
+                {
+                    name: 'flag',
+                    type: 'file',
+                    allowedFileTypes: ['jpeg', 'jpg', 'png', 'svg'],
+                    required: true,
+                    defaultValue: 'https://placehold.co/32x32',
+                },
+            ],
         }
     ]
 })
