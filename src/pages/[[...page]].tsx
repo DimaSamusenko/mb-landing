@@ -18,7 +18,7 @@ const memoryCache = createCache(
 		max: 100,
 		ttl: cacheTtl,
 	}),
-)
+);
 
 function getLocale(url: string) {
 	return [url.split("-"), url.split("_")]
@@ -35,22 +35,20 @@ export async function getServerSideProps({ req, res, resolvedUrl, query }) {
 	const slug = ((query?.page as string[])?.join("/") || "");
 	const urlLocale = getLocale(slug);
 
-	if (req.url.includes('_next/')) {
-		return { props: { page: null, locale: urlLocale } }
-	}
-
 	if (cookieRedirect(req, res, query)) {
-		return redirectUrl("https://www.marathonbet.com/");
+		const queryParam = getQuery(req);
+		return redirectUrl("https://rbalancer.com" + queryParam);
 	}
 
 	if (query.lang) {
 		const {home, group, paths} = await getPages(slug);
 		const cachedData: any = await memoryCache.get(slug);
+		console.log('lang cache', !!cachedData, slug);
 		let page = cachedData?.page;
 		if (slug.slice(-3) === `-${query.lang}`) {
 			if (!page) {
 				page = await getPage(slug, urlLocale);
-				await memoryCache.set(slug, { page }, cacheTtl)
+				await memoryCache.set(slug, { page }, cacheTtl);
 			}
 			return { props: { page, locale: urlLocale } }
 		} else if (query.lang === 'en') {
@@ -72,9 +70,13 @@ export async function getServerSideProps({ req, res, resolvedUrl, query }) {
 
 	const {home, group} = await getPages(slug);
 
-	const acceptLanguage = req.headers['accept-language']?.slice(0, 2);
+	const acceptLanguage = req.headers['accept-language']?.slice(0, 2) || 'en';
 	const redirectSlug = `${home}-${acceptLanguage}`;
-	const cachedData: any = await memoryCache.get(redirectSlug);
+	const cachedData: any = (await Promise.all([
+		memoryCache.get(redirectSlug),
+		memoryCache.get(home)
+	])).filter(Boolean)[0] || null;
+	console.log('redirectSlug cache', !!cachedData, redirectSlug);
 	let page = cachedData?.page;
 
 	if (slug === redirectSlug) {
@@ -89,8 +91,7 @@ export async function getServerSideProps({ req, res, resolvedUrl, query }) {
 			await memoryCache.set(home, { page }, cacheTtl);
 		}
 		return { props: { page, locale: urlLocale || localeDefault } }
-	}
-	else if (!group.includes(redirectSlug)) {
+	} else if (!group.includes(redirectSlug)) {
 		return redirectUrl(`/${home}`);
 	} else {
 		return redirectUrl(`/${redirectSlug}`);
@@ -157,6 +158,7 @@ function redirectUrl(destination: string) {
 
 async function getPages(slug) {
 	const cachedPages: any = await memoryCache.get('pages');
+	console.log('pages cache');
 	let pages = cachedPages?.pages;
 	if (!pages) {
 		pages = await getAllPages();
@@ -168,6 +170,7 @@ async function getPages(slug) {
 		}
 	}).filter(Boolean).flat();
 	const home = group.sort((a, b) => a.length - b.length)[0];
+	await memoryCache.set('pages', { pages }, cacheTtl);
 	return {
 		paths,
 		group,
