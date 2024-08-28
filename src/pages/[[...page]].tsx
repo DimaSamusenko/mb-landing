@@ -77,7 +77,8 @@ export async function getServerSideProps({ req, res, resolvedUrl, query }) {
 		memoryCache.get(home)
 	])).filter(Boolean)[0] || null;
 	console.log('redirectSlug cache', !!cachedData, redirectSlug);
-	let page = cachedData?.page;
+	// let page = cachedData?.page;
+	let page = null;
 
 	if (slug === redirectSlug) {
 		if (!page) {
@@ -130,6 +131,8 @@ async function getPage(slug: string, locale: string) {
 			options: {
 				locale,
 			},
+			cacheSeconds: 10,
+			cachebust: true,
 		})
 		.toPromise() || null;
 }

@@ -6,6 +6,7 @@ import CookiePolicy from "@/components/cookie-policy/cookie-policy";
 import CopyPromocode from "@/components/copy-promocode/copy-promocode";
 import CookieBanner from "@/components/cookie-banner/cookie-banner";
 import LangSelector from "@/components/lang-selector/lang-selector";
+import Accordion from "@/components/accordion/accordion";
 
 Builder.registerComponent(withChildren(AnimationChip), {
     name: 'Animation Chip',
@@ -100,4 +101,25 @@ Builder.registerComponent(LangSelector, {
             ],
         }
     ]
-})
+});
+
+Builder.registerComponent(Accordion, {
+    name: 'Accordion',
+    inputs: [
+        { name: 'title', type: 'text' },
+        {
+            name: 'items',
+            type: 'list',
+            subFields: [
+                {
+                    name: 'title',
+                    type: 'string',
+                },
+                {
+                    name: 'text',
+                    type: 'longText',
+                },
+            ]
+        }
+    ]
+});
