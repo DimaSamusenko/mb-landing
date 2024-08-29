@@ -7,6 +7,7 @@ import CopyPromocode from "@/components/copy-promocode/copy-promocode";
 import CookieBanner from "@/components/cookie-banner/cookie-banner";
 import LangSelector from "@/components/lang-selector/lang-selector";
 import Accordion from "@/components/accordion/accordion";
+import ButtonGold from "@/components/button-vip/button-gold";
 
 Builder.registerComponent(withChildren(AnimationChip), {
     name: 'Animation Chip',
@@ -123,3 +124,16 @@ Builder.registerComponent(Accordion, {
         }
     ]
 });
+
+Builder.registerComponent(withChildren(ButtonGold), {
+    name: 'Button VIP',
+    inputs: [
+        { name: 'label', type: 'text' },
+    ],
+    defaultChildren: [
+        {
+            '@type': '@builder.io/sdk:Element',
+            component: { name: 'Text', options: { text: 'Подтвердить VIP-статус' } }
+        }
+    ]
+})

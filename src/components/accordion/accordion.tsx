@@ -9,16 +9,14 @@ export default function Accordion({items, title}) {
         <div className={styles["accordion"]}>
             <div className={styles.header}>{title}</div>
             <AccordionWrapper collapsible={true}>
-                {items.map((item, index) => {
-                    return (
-                        <AccordionItem id={index} key={`${index}-${item.title}`}>
-                            <AccordionToggle>
-                                <div>{item.title}</div>
-                            </AccordionToggle>
-                            <AccordionBody id={'1'} activeAccordionItem={'1'}><div>{item.text}</div></AccordionBody>
-                        </AccordionItem>
-                    );
-                })}
+                {items.map((item, index) => (
+                    <AccordionItem id={index} key={`${index}-${item.title}`}>
+                        <AccordionToggle>
+                            <div>{item.title}</div>
+                        </AccordionToggle>
+                        <AccordionBody id={'1'} activeAccordionItem={'1'}><div>{item.text}</div></AccordionBody>
+                    </AccordionItem>
+                ))}
             </AccordionWrapper>
         </div>
     );
